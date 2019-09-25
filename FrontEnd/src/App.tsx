@@ -1,12 +1,22 @@
+import { faBeer, faCloud } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import './App.scss';
+import Card from './components/Card';
 
-const App: React.FC = () => {
-    return (
-        <div className='app'>
-            <span>It is working!</span>
-        </div>
-    );
-};
-
-export default App;
+export default class App extends React.Component {
+    render() {
+        return (
+            <div className='app'>
+                <div className='header-container'>
+                    <div className='icon-container'>
+                        <FontAwesomeIcon icon={faCloud} className='cloud' />
+                        <FontAwesomeIcon icon={faBeer} className='beer' />
+                    </div>
+                    <span className='title'>Beer temperature control system</span>
+                </div>
+                <Card />
+            </div>
+        );
+    }
+}
