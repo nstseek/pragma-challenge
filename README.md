@@ -1,3 +1,7 @@
+# This repository was made for a project that solves the challenge made by DBServer/Pragma
+
+- Challenge description 
+
 Code Challenge
 
 Meet Shane. He works at dbBeer, a boutique micro brewery based in a rural area of Australia and creator of 6 unique beer varieties. Shane is responsible for driving the large transport truck, delivering goods from the brewery to a number of pubs across metropolitan Sydney each week.
