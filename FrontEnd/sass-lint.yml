@@ -1,0 +1,5 @@
+files:
+  include: 'src/**/*.scss'
+rules:
+  indentation: 0
+  property-sort-order: 0

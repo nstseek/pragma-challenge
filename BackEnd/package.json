@@ -1,0 +1,41 @@
+{
+  "name": "pragma-challenge-backend",
+  "version": "1.0.0",
+  "description": "Backend app for pragma-challenge",
+  "main": "js/server.js",
+  "scripts": {
+    "test": "jest",
+    "start": "nodemon ./js/server.js",
+    "start:dev": "sh ./.scripts/startdev.sh",
+    "lint": "tslint ./ts/*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nstseek/pragma-challenge.git"
+  },
+  "keywords": [
+    "full-stack",
+    "node",
+    "react"
+  ],
+  "author": "Rafael Lopes Schneider",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nstseek/pragma-challenge/issues"
+  },
+  "homepage": "https://github.com/nstseek/pragma-challenge#readme",
+  "dependencies": {
+    "@types/body-parser": "^1.17.1",
+    "@types/cors": "^2.8.6",
+    "@types/express": "^4.17.1",
+    "@types/jest": "^24.0.18",
+    "@types/node": "^12.7.7",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "jest": "^24.9.0",
+    "nodemon": "^1.19.2",
+    "ts-jest": "^24.1.0",
+    "tslint": "^5.20.0"
+  }
+}

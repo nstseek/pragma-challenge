@@ -1,0 +1,61 @@
+{
+    "name": "pragma-challenge",
+    "version": "1.0.0",
+    "description": "Frontend app for pragma-challenge",
+    "private": true,
+    "author": "Rafael Lopes Schneider",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/nstseek/pragma-challenge/issues"
+    },
+    "homepage": "https://github.com/nstseek/pragma-challenge#readme",
+    "dependencies": {
+        "@fortawesome/fontawesome-svg-core": "^1.2.25",
+        "@fortawesome/free-solid-svg-icons": "^5.11.2",
+        "@fortawesome/react-fontawesome": "^0.1.4",
+        "@types/jest": "24.0.18",
+        "@types/node": "12.7.7",
+        "@types/react": "16.9.3",
+        "@types/react-dom": "16.9.1",
+        "bootstrap": "^4.3.1",
+        "node-sass": "^4.12.0",
+        "react": "^16.9.0",
+        "react-bootstrap": "^1.0.0-beta.12",
+        "react-dom": "^16.9.0",
+        "react-scripts": "3.1.2",
+        "typescript": "3.6.3"
+    },
+    "scripts": {
+        "start": "react-scripts start",
+        "build": "react-scripts build",
+        "test": "react-scripts test",
+        "eject": "react-scripts eject",
+        "lint": "tslint ./src/**/*.tsx",
+        "lint:fix": "tslint --fix ./src/**/*.tsx",
+        "lint:css": "sass-lint -c sass-lint.yml -v"
+    },
+    "keywords": [
+        "full-stack",
+        "node",
+        "react"
+    ],
+    "eslintConfig": {
+        "extends": "react-app"
+    },
+    "browserslist": {
+        "production": [
+            ">0.2%",
+            "not dead",
+            "not op_mini all"
+        ],
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
+    },
+    "devDependencies": {
+        "sass-lint": "^1.13.1",
+        "tslint": "^5.20.0"
+    }
+}
