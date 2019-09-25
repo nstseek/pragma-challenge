@@ -5,9 +5,11 @@
   "main": "js/server.js",
   "scripts": {
     "test": "jest",
-    "start": "nodemon ./js/server.js",
+    "start": "nodemon ./js/run-server.js",
     "start:dev": "sh ./.scripts/startdev.sh",
-    "lint": "tslint ./ts/*"
+    "lint": "tslint ./ts/**/*",
+    "script:tsc": "tsc --watch",
+    "script:compile": "tsc"
   },
   "repository": {
     "type": "git",
@@ -36,6 +38,7 @@
     "jest": "^24.9.0",
     "nodemon": "^1.19.2",
     "ts-jest": "^24.1.0",
-    "tslint": "^5.20.0"
+    "tslint": "^5.20.0",
+    "typescript": "^3.6.3"
   }
 }
