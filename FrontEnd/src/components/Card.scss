@@ -1,0 +1,110 @@
+@import '../colors.scss';
+
+$bar-height: 25px;
+
+.card-container {
+    display: flex;
+    flex-direction: column;
+    width: calc(400px - 40px);
+    height: calc(225px - 40px);
+    background-color: $white;
+    border-radius: 5px;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 20px;
+    border: 1px solid #fff;
+    box-shadow: 0px 0px 15px 1px white;
+    transition: all 0.2s;
+}
+
+.card-container:hover {
+    box-shadow: 0px 0px 15px 5px white;
+}
+
+.card-header {
+    margin-bottom: 5px;
+    width: calc(100% - 5px);
+    padding: 2.5px;
+    height: 20%;
+    color: $black;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.card-header > span {
+    font-family: 'Roboto', sans-serif;
+    margin-left: 10px;
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.card-data {
+    height: calc(80% - 50px);
+    padding: 25px 10px 25px 10px;
+    width: calc(100% - 20px);
+}
+
+.card-temperature {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+
+.card-temperature > span {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: lighter;
+}
+
+.temperature-bar {
+    margin: 10px 0 0 0;
+    width: 100%;
+    border: 1px solid gray;
+    height: $bar-height;
+    border-radius: 5px;
+    background-image: linear-gradient(to right, $green, $yellow, $red);
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    overflow: hidden;
+}
+
+.temperature-title {
+    margin-bottom: 5px;
+    font-size: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: calc(100% - 10px);
+    padding: 0 5px 0 5px;
+}
+
+.temperature-title > div {
+    display: flex;
+    flex-direction: row;
+}
+
+.gold-separator {
+    width: 100%;
+    height: 8px;
+    background-image: linear-gradient(to right, $gold-dark, $gold-light, $gold-dark);
+}
+
+.temperature-filler {
+    background-color: $white;
+    height: $bar-height;
+    width: 70%;
+    transition: 0.1s all;
+}
+
+.status-circle {
+    height: 15px;
+    width: 15px;
+    border-radius: 7.5px;
+    border: 1px solid gray;
+    background-color: $green;
+    margin-left: 5px;
+}

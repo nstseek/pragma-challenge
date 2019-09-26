@@ -15,7 +15,9 @@ export default class App extends React.Component {
                     </div>
                     <span className='title'>Beer temperature control system</span>
                 </div>
-                <Card />
+                <div className='cards-container'>
+                    <Card />
+                </div>
             </div>
         );
     }

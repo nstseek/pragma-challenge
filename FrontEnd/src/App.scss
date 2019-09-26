@@ -29,7 +29,7 @@
 .header-container {
     overflow: hidden;
     display: flex;
-    width: 100%;
+    width: calc(100%-50px);
     height: 8%;
     max-height: 100px;
     border-bottom: 2px solid $white;
@@ -43,4 +43,12 @@
     font-size: 32px;
     margin-left: 20px;
     font-weight: 500;
+}
+
+.cards-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 50px;
 }
