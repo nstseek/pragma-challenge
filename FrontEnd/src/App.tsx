@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import './App.scss';
 import Card from './components/Card';
+import * as MockValues from './mockValues';
 
 const server = 'http://localhost:7000';
 
@@ -20,6 +21,8 @@ interface State {
 }
 
 export default class App extends React.Component<any, State> {
+    mocker: MockValues.ValuesGenerator;
+
     constructor(props: any) {
         super(props);
         this.state = {
@@ -32,12 +35,14 @@ export default class App extends React.Component<any, State> {
                 wheatBeer: 5
             }
         };
-        this.fetchTemps();
+        this.mocker = new MockValues.MockValues();
+        this.updateMockTemps();
     }
 
     render() {
         return (
             <div className='app'>
+                <span className='watermark'>Todos os valores aqui são gerados usando Math.random()</span>
                 <div className='header-container'>
                     <div className='icon-container'>
                         <FontAwesomeIcon icon={faCloud} className='cloud' />
@@ -56,6 +61,15 @@ export default class App extends React.Component<any, State> {
             </div>
         );
     }
+
+    updateMockTemps = () => {
+        const temps = this.mocker.infiniteLoop();
+        this.setState((previousState: State) => ({
+            ...previousState,
+            temps
+        }));
+        setTimeout(this.updateMockTemps, 1000);
+    };
 
     fetchTemps = async () => {
         const response = await fetch(`${server}/temps`);
