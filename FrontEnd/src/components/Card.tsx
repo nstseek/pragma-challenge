@@ -67,7 +67,7 @@ export default class Card extends React.Component<Props> {
                         <div className='temperature-title'>
                             <span>Temperature: </span>
                             <span>
-                                {this.props.temperature}°C ({this.percentage.toFixed(1)}%)
+                                {this.props.temperature.toFixed(3)}°C ({this.percentage.toFixed(1)}%)
                             </span>
                         </div>
                         <div className='temperature-bar'>
