@@ -102,7 +102,6 @@ const delay = () =>
 const infiniteLoop = async () => {
     while (1) {
         const keys = Object.keys(temps);
-        console.log('Got the keys');
         keys.forEach(async (key: Beers) => {
             generateValue(key);
             await fetch(`${server}/${routes[key]}`, {
@@ -112,7 +111,6 @@ const infiniteLoop = async () => {
                 headers: { 'Content-Type': 'application/json' },
                 method: 'POST'
             });
-            console.log(`Sent ${key} new temperature - ${temps[key]}`);
         });
         await delay();
     }
