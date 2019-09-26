@@ -4,7 +4,37 @@ import React from 'react';
 import './App.scss';
 import Card from './components/Card';
 
-export default class App extends React.Component {
+const server = 'http://localhost:7000';
+
+const delay = 1000;
+
+interface State {
+    temps: {
+        ipa: number;
+        lager: number;
+        paleAle: number;
+        pilsner: number;
+        stout: number;
+        wheatBeer: number;
+    };
+}
+
+export default class App extends React.Component<any, State> {
+    constructor(props: any) {
+        super(props);
+        this.state = {
+            temps: {
+                ipa: 5,
+                lager: 5,
+                paleAle: 5,
+                pilsner: 5,
+                stout: 5,
+                wheatBeer: 5
+            }
+        };
+        this.fetchTemps();
+    }
+
     render() {
         return (
             <div className='app'>
@@ -16,9 +46,21 @@ export default class App extends React.Component {
                     <span className='title'>Beer temperature control system</span>
                 </div>
                 <div className='cards-container'>
-                    <Card />
+                    <Card title='IPA' temperature={this.state.temps.ipa} tempRange={{ max: 6, min: 5 }} />
+                    <Card title='Lager' temperature={this.state.temps.lager} tempRange={{ max: 7, min: 4 }} />
+                    <Card title='Pale Ale' temperature={this.state.temps.paleAle} tempRange={{ max: 6, min: 4 }} />
+                    <Card title='Pilsner' temperature={this.state.temps.pilsner} tempRange={{ max: 6, min: 4 }} />
+                    <Card title='Stout' temperature={this.state.temps.stout} tempRange={{ max: 8, min: 6 }} />
+                    <Card title='Wheat beer' temperature={this.state.temps.wheatBeer} tempRange={{ max: 5, min: 3 }} />
                 </div>
             </div>
         );
     }
+
+    fetchTemps = async () => {
+        const response = await fetch(`${server}/temps`);
+        const temps = await response.json();
+        this.setState((previousState: State) => ({ ...previousState, temps }));
+        setTimeout(this.fetchTemps, delay);
+    };
 }

@@ -3,31 +3,52 @@ import './Card.scss';
 
 interface Props {
     title: string;
+    temperature: number;
+    tempRange: {
+        max: number;
+        min: number;
+    };
 }
 
-interface State {
-    temperature: number;
-    filler: number;
-    status: Status;
+interface TempRange {
+    min: number;
+    max: number;
 }
 
 enum Status {
     OK = 0,
-    Warning,
-    'Too hot'
+    'Too hot',
+    'Too cold'
 }
 
-export default class Card extends React.Component<Props, State> {
+enum StatusColor {
+    green = '#00d162',
+    blue = '#3e5fed',
+    red = '#ff005e'
+}
+
+export default class Card extends React.Component<Props> {
+    filler: number;
+    status: Status;
+    percentage: number;
+    tempThreshold: TempRange;
+    statusColor: string;
+
     constructor(props: Props) {
         super(props);
-        this.state = {
-            filler: 0,
-            status: 0,
-            temperature: 0
+        this.filler = 50;
+        this.percentage = 100 - this.filler;
+        this.status = Status.OK;
+        this.statusColor = StatusColor.green;
+        this.tempThreshold = {
+            max: this.props.tempRange.max + (this.props.tempRange.max - this.props.tempRange.min),
+            min: this.props.tempRange.min - (this.props.tempRange.max - this.props.tempRange.min)
         };
+        this.evaluateFillerLength();
     }
 
     render() {
+        this.evaluateFillerLength();
         return (
             <div className='card-container'>
                 <div className='card-header'>
@@ -39,20 +60,60 @@ export default class Card extends React.Component<Props, State> {
                         <div className='temperature-title'>
                             <span>Status: </span>
                             <div>
-                                <span>OK</span>
-                                <div className='status-circle'></div>
+                                <span>{Status[this.status]}</span>
+                                <div className='status-circle' style={{ backgroundColor: this.statusColor }}></div>
                             </div>
                         </div>
                         <div className='temperature-title'>
                             <span>Temperature: </span>
-                            <span>8°C</span>
+                            <span>
+                                {this.props.temperature}°C ({this.percentage.toFixed(1)}%)
+                            </span>
                         </div>
                         <div className='temperature-bar'>
-                            <div className='temperature-filler' />
+                            <div className='temperature-filler' style={{ width: `${this.filler.toFixed(0)}%` }} />
                         </div>
                     </div>
                 </div>
             </div>
         );
     }
+
+    evaluateFillerLength = () => {
+        const tempAboveMinimum = this.props.temperature - this.props.tempRange.min;
+        const tempRange = this.props.tempRange.max - this.props.tempRange.min;
+        const tempPercent = (tempAboveMinimum / tempRange) * 100;
+        this.percentage = tempPercent;
+        if (this.props.temperature > this.props.tempRange.max) {
+            this.status = Status['Too hot'];
+        } else if (this.props.temperature < this.props.tempRange.min) {
+            this.status = Status['Too cold'];
+        } else {
+            this.status = Status.OK;
+        }
+        if (this.props.temperature >= this.tempThreshold.max) {
+            this.filler = 0;
+        } else if (this.props.temperature <= this.tempThreshold.min) {
+            this.filler = 99;
+            this.status = Status['Too cold'];
+        } else {
+            const thresholdRange = this.tempThreshold.max - this.tempThreshold.min;
+            const thresholdTemp = this.props.temperature - this.tempThreshold.min;
+            const fillerPercent = (thresholdTemp / thresholdRange) * 100;
+            this.filler = 100 - fillerPercent;
+        }
+        switch (this.status) {
+            case Status.OK:
+                this.statusColor = StatusColor.green;
+                break;
+            case Status['Too cold']:
+                this.statusColor = StatusColor.blue;
+                break;
+            case Status['Too hot']:
+                this.statusColor = StatusColor.red;
+                break;
+            default:
+                this.statusColor = StatusColor.green;
+        }
+    };
 }
