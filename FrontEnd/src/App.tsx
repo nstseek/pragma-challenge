@@ -42,7 +42,10 @@ export default class App extends React.Component<any, State> {
     render() {
         return (
             <div className='app'>
-                <span className='watermark'>Todos os valores aqui são gerados usando Math.random()</span>
+                <span className='watermark'>
+                    Todos os valores aqui são gerados usando Math.random(), o código fonte do backend está disponível no
+                    repositório desta página
+                </span>
                 <div className='header-container'>
                     <div className='icon-container'>
                         <FontAwesomeIcon icon={faCloud} className='cloud' />
