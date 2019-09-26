@@ -72,6 +72,14 @@ Develop a solution that allows Shane to be aware of the current temperature of e
 
 - Caso deseje rodar os testes, use npm run test;
 
-Para o funcionamento correto, você deve executar primeiro o back-end e depois o front-end, nas versões da branch master.
+## Para rodar ambos e visualizar a página, siga os passos abaixo:
+
+- Entre na pasta raíz do projeto;
+
+- Execute o comando sh ./run.sh;
+
+Estes passos só funcionam no Linux, não servem para Windows, assim como o projeto também não foi testado no Windows.
+
+Para o funcionamento correto, você deve executar primeiro o back-end e depois o front-end, nas versões da branch master, caso não execute o script automatizado.
 
 Caso deseje ver o front-end funcionando com mocks, entre na branch mock-frontend-version e siga os passos para rodar apenas o front-end.
