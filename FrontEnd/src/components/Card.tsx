@@ -23,7 +23,7 @@ enum Status {
 
 enum StatusColor {
     green = '#00d162',
-    blue = '#3e5fed',
+    blue = '#0000ff',
     red = '#ff005e'
 }
 
@@ -33,9 +33,11 @@ export default class Card extends React.Component<Props> {
     percentage: number;
     tempThreshold: TempRange;
     statusColor: string;
+    boxShadow: string;
 
     constructor(props: Props) {
         super(props);
+        this.boxShadow = `0px 0px 15px 1px ${StatusColor.green}`;
         this.filler = 50;
         this.percentage = 100 - this.filler;
         this.status = Status.OK;
@@ -50,7 +52,7 @@ export default class Card extends React.Component<Props> {
     render() {
         this.evaluateFillerLength();
         return (
-            <div className='card-container'>
+            <div className='card-container' style={{ boxShadow: this.boxShadow }}>
                 <div className='card-header'>
                     <span>{this.props.title}</span>
                 </div>
@@ -86,10 +88,13 @@ export default class Card extends React.Component<Props> {
         this.percentage = tempPercent;
         if (this.props.temperature > this.props.tempRange.max) {
             this.status = Status['Too hot'];
+            this.boxShadow = `0px 0px 15px 1px ${StatusColor.red}`;
         } else if (this.props.temperature < this.props.tempRange.min) {
             this.status = Status['Too cold'];
+            this.boxShadow = `0px 0px 15px 1px ${StatusColor.blue}`;
         } else {
             this.status = Status.OK;
+            this.boxShadow = `0px 0px 15px 1px ${StatusColor.green}`;
         }
         if (this.props.temperature >= this.tempThreshold.max) {
             this.filler = 0;

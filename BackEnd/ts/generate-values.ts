@@ -4,6 +4,8 @@ const server = 'http://localhost:7000';
 
 const maxJump = 0.6;
 
+const criticalValue = 1.5;
+
 let signal = 1;
 
 enum Status {
@@ -119,7 +121,7 @@ const infiniteLoop = async () => {
 const generateValue = (key: Beers) => {
     const halfRange = (tempRange[key].max - tempRange[key].min) / 2 + tempRange[key].min;
     const temp = temps[key] - halfRange;
-    if (Math.abs(temp) > 2) {
+    if (Math.abs(temp) > criticalValue) {
         tempStatus[key] = temp < 0 ? Status.Cold : Status.Hot;
     }
     if (tempStatus[key] !== Status.OK) {
