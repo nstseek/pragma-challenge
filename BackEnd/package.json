@@ -5,7 +5,7 @@
   "main": "js/server.js",
   "scripts": {
     "test": "jest",
-    "start": "nodemon ./js/run-server.js",
+    "start": "sh ./.scripts/runmock.sh",
     "start:dev": "sh ./.scripts/startdev.sh",
     "lint": "tslint ./ts/**/*",
     "script:tsc": "tsc --watch",

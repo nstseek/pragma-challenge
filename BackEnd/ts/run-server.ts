@@ -1,14 +1,14 @@
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import express from 'express';
-import routeIpa from './routes/ipa/ipa';
-import routeLager from './routes/lager/lager';
-import routePaleAle from './routes/pale-ale/pale-ale';
-import routePilsner from './routes/pilsner/pilsner';
+import routeTemps from './routes/get-temps/temps';
 import routeRoot from './routes/root/root';
-import routeStout from './routes/stout/stout';
-import routeTemps from './routes/temps/temps';
-import routeWheatBeer from './routes/wheat-beer/wheat-beer';
+import routeIpa from './routes/save-temp/ipa/ipa';
+import routeLager from './routes/save-temp/lager/lager';
+import routePaleAle from './routes/save-temp/pale-ale/pale-ale';
+import routePilsner from './routes/save-temp/pilsner/pilsner';
+import routeStout from './routes/save-temp/stout/stout';
+import routeWheatBeer from './routes/save-temp/wheat-beer/wheat-beer';
 import Server from './server';
 
 // @ts-ignore

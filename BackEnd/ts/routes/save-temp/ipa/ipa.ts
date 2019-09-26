@@ -1,6 +1,6 @@
 import * as core from 'express-serve-static-core';
-import postIpaTemperature from '../../models/save-temp/ipa/ipa';
-import { IBeers } from '../../types/server.type';
+import postIpaTemperature from '../../../models/save-temp/ipa/ipa';
+import { IBeers } from '../../../types/server.type';
 
 const route = '/ipa';
 

@@ -1,6 +1,6 @@
 import * as core from 'express-serve-static-core';
-import postPilsnerTemperature from '../../models/save-temp/pilsner/pilsner';
-import { IBeers } from '../../types/server.type';
+import postPilsnerTemperature from '../../../models/save-temp/pilsner/pilsner';
+import { IBeers } from '../../../types/server.type';
 
 const route = '/pilsner';
 
