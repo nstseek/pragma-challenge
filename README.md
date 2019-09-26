@@ -49,3 +49,29 @@ Develop a solution that allows Shane to be aware of the current temperature of e
 - What were the questions you would ask and your own answers/assumptions?
 
 - Any other notes you feel relevant for the evaluation of your solution
+
+## Para rodar o back-end desse projeto, siga os passos abaixo:
+
+- Entre na pasta BackEnd;
+
+- Execute o comando npm install;
+
+- Execute o comando npm run script:compile;
+
+- Execute o comando npm start (esse comando irá rodar o servidor juntamente com um script em node que gera os valores fazendo requests ao servidor em operacão, colocando dados lá);
+
+- Caso deseje rodar os testes, use npm run test;
+
+## Para rodar o front-end desse projeto, siga os passos abaixo:
+
+- Entre na pasta FrontEnd;
+
+- Execute o comando npm install;
+
+- Execute o comando npm start;
+
+- Caso deseje rodar os testes, use npm run test;
+
+Para o funcionamento correto, você deve executar primeiro o back-end e depois o front-end, nas versões da branch master.
+
+Caso deseje ver o front-end funcionando com mocks, entre na branch mock-frontend-version e siga os passos para rodar apenas o front-end.
