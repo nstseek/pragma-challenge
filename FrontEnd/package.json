@@ -8,7 +8,7 @@
     "bugs": {
         "url": "https://github.com/nstseek/pragma-challenge/issues"
     },
-    "homepage": "https://github.com/nstseek/pragma-challenge#readme",
+    "homepage": "https://nstseek.github.io/Pages/beer-system",
     "dependencies": {
         "@fortawesome/fontawesome-svg-core": "^1.2.25",
         "@fortawesome/free-solid-svg-icons": "^5.11.2",
