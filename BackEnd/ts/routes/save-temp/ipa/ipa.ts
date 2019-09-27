@@ -4,10 +4,9 @@ import { IBeers } from '../../../types/server.type';
 
 export const route = '/ipa';
 
-export const routeCallback = (beers: IBeers) => (
+export const routeCallback = (beers: IBeers, postTemp = postIpaTemperature) => (
     req: core.Request,
-    res: core.Response,
-    postTemp = postIpaTemperature
+    res: core.Response
 ) => postTemp(req, res, beers);
 
 export function routeIpa(server: core.Express, beers: IBeers, callback2ord = routeCallback(beers)) {

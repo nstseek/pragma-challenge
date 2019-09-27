@@ -8,14 +8,15 @@ const mockLog = jest.fn();
 
 describe('root route test', () => {
     it('should set get route', () => {
+        const routeCb = routeCallback(mockLog);
         // @ts-ignore
-        routeRoot(mockServer, mockLog);
-        expect(mockServer.get).toHaveBeenCalledWith(route, routeCallback);
+        routeRoot(mockServer, routeCb);
+        expect(mockServer.get).toHaveBeenCalledWith(route, routeCb);
     });
 
     it('should call logStatus', () => {
         // @ts-ignore
-        routeCallback({}, {}, mockLog);
+        routeCallback(mockLog)({}, {});
         expect(mockLog).toHaveBeenCalledWith({}, {});
     });
 });

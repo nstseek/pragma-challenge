@@ -27,7 +27,7 @@ describe('Lager route test', () => {
 
     it('Should call postLagerTemperature', () => {
         // @ts-ignore
-        routeCallback(mockBeers)({}, {}, mockPostLagerTemperature);
+        routeCallback(mockBeers, mockPostLagerTemperature)({}, {});
         expect(mockPostLagerTemperature).toHaveBeenCalledWith({}, {}, mockBeers);
     });
 });

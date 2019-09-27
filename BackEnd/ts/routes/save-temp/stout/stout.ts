@@ -4,10 +4,9 @@ import { IBeers } from '../../../types/server.type';
 
 export const route = '/stout';
 
-export const routeCallback = (beers: IBeers) => (
+export const routeCallback = (beers: IBeers, postTemp = postStoutTemperature) => (
     req: core.Request,
-    res: core.Response,
-    postTemp = postStoutTemperature
+    res: core.Response
 ) => postTemp(req, res, beers);
 
 export function routeStout(server: core.Express, beers: IBeers, callback2ord = routeCallback(beers)) {

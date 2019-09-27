@@ -27,7 +27,7 @@ describe('ipa route test', () => {
 
     it('should call postIpaTemperature', () => {
         // @ts-ignore
-        routeCallback(mockBeers)({}, {}, mockPostWheatBeerTemperature);
+        routeCallback(mockBeers, mockPostWheatBeerTemperature)({}, {});
         expect(mockPostWheatBeerTemperature).toHaveBeenCalledWith({}, {}, mockBeers);
     });
 });

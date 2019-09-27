@@ -27,7 +27,7 @@ describe('Stout route test', () => {
 
     it('Should call postIpaTemperature', () => {
         // @ts-ignore
-        routeCallback(mockBeers)({}, {}, mockPostStoutTemperature);
+        routeCallback(mockBeers, mockPostStoutTemperature)({}, {});
         expect(mockPostStoutTemperature).toHaveBeenCalledWith({}, {}, mockBeers);
     });
 });

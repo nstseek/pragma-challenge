@@ -15,23 +15,18 @@ import routeWheatBeer from './routes/save-temp/wheat-beer/wheat-beer';
 import NodeServer from './server';
 
 // @ts-ignore
-const server = (Server: typeof NodeServer) =>
-    new Server(
-        express,
-        cors,
-        bodyParser,
-        logger,
-        routeIpa,
-        routeLager,
-        routePaleAle,
-        routePilsner,
-        routeStout,
-        routeWheatBeer,
-        routeRoot,
-        routeTemps,
-        7000
-    );
-
-if (process.argv[2] === '--start') {
-    server(NodeServer);
-}
+const server = new NodeServer(
+    express,
+    cors,
+    bodyParser,
+    logger,
+    routeIpa,
+    routeLager,
+    routePaleAle,
+    routePilsner,
+    routeStout,
+    routeWheatBeer,
+    routeRoot,
+    routeTemps,
+    7000
+);

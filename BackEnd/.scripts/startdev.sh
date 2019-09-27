@@ -1,3 +1,3 @@
 npm run script:compile
 npm run script:tsc &
-npm run start
+nodemon js/run-server.js --start

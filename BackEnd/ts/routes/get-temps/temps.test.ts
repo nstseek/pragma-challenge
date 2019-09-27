@@ -28,7 +28,7 @@ describe('temps route test', () => {
 
     it('should call getTemp', () => {
         // @ts-ignore
-        const result = routeCallback(mockBeers)({}, {}, mockGetTemps);
+        const result = routeCallback(mockBeers, mockGetTemps)({}, {});
         expect(mockGetTemps).toHaveBeenCalledWith({}, {}, mockBeers);
     });
 });
