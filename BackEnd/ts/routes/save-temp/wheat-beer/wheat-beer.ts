@@ -2,8 +2,16 @@ import * as core from 'express-serve-static-core';
 import postWheatBeerTemperature from '../../../models/save-temp/wheat-beer/wheat-beer';
 import { IBeers } from '../../../types/server.type';
 
-const route = '/wheat-beer';
+export const route = '/wheat-beer';
 
-export default function routeWheatBeer(server: core.Express, beers: IBeers) {
-    server.post(route, (req: core.Request, res: core.Response) => postWheatBeerTemperature(req, res, beers));
+export const routeCallback = (beers: IBeers) => (
+    req: core.Request,
+    res: core.Response,
+    postTemp = postWheatBeerTemperature
+) => postTemp(req, res, beers);
+
+export function routeWheatBeer(server: core.Express, beers: IBeers, callback2ord = routeCallback(beers)) {
+    server.post(route, callback2ord);
 }
+
+export default routeWheatBeer;

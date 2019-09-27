@@ -5,7 +5,8 @@ import postBeerTemperature from '../saveTemp';
 const postPaleAleTemperature = (
     req: BodyTypes.IRequest,
     res: BodyTypes.IResponse<BodyTypes.IJSONMessage>,
-    beers: IBeers
-) => postBeerTemperature(req, res, beers, BodyTypes.Beer['Pale Ale']);
+    beers: IBeers,
+    postBeer = postBeerTemperature
+) => postBeer(req, res, beers, BodyTypes.Beer['Pale Ale']);
 
 export default postPaleAleTemperature;

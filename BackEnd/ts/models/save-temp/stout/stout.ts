@@ -5,7 +5,8 @@ import postBeerTemperature from '../saveTemp';
 const postStoutTemperature = (
     req: BodyTypes.IRequest,
     res: BodyTypes.IResponse<BodyTypes.IJSONMessage>,
-    beers: IBeers
-) => postBeerTemperature(req, res, beers, BodyTypes.Beer.Stout);
+    beers: IBeers,
+    postBeer = postBeerTemperature
+) => postBeer(req, res, beers, BodyTypes.Beer.Stout);
 
 export default postStoutTemperature;

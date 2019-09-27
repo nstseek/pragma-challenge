@@ -2,23 +2,26 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 import express from 'express';
 import * as core from 'express-serve-static-core';
+import { Server } from 'http';
 import logger from './models/middleware/middleware-log';
 import routeTemps from './routes/get-temps/temps';
 import routeRoot from './routes/root/root';
-import routeIpa from './routes/save-temp/lager/lager';
 import routeLager from './routes/save-temp/lager/lager';
+import routeIpa from './routes/save-temp/lager/lager';
 import routePaleAle from './routes/save-temp/pale-ale/pale-ale';
 import routePilsner from './routes/save-temp/pilsner/pilsner';
 import routeStout from './routes/save-temp/stout/stout';
 import routeWheatBeer from './routes/save-temp/wheat-beer/wheat-beer';
 import { IBeers, IServer } from './types/server.type';
 
-export default class Server implements IServer {
+export default class NodeServer implements IServer {
     Express: typeof express;
     Cors: typeof cors;
     BodyParser: typeof bodyParser;
     server: core.Express;
     beers: IBeers;
+    ready: boolean;
+    serverHandler: Server;
 
     constructor(
         expressLib: typeof express,
@@ -35,17 +38,19 @@ export default class Server implements IServer {
         port: number
     ) {
         this.Cors = corsLib;
+        this.ready = false;
         this.Express = expressLib;
         this.BodyParser = bodyParserLib;
         this.server = this.Express();
         this.server.use(this.Cors());
         this.server.use(this.BodyParser({ limit: '10mb' }));
         this.server.use(logger);
-        this.server.listen(port, (err: string) => {
+        this.serverHandler = this.server.listen(port, (err: string) => {
             if (err) {
                 throw new Error(err);
             } else {
                 console.log(`Listening on port ${port}`);
+                this.ready = true;
             }
         });
         this.beers = {

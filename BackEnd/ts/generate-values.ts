@@ -1,3 +1,5 @@
+// this file does not have a .test.ts since it is not crucial for production, it is only meant for simulation
+
 import fetch from 'node-fetch';
 
 const server = 'http://localhost:7000';
