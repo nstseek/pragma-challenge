@@ -1,0 +1,22 @@
+{
+  "name": "pragma-challenge",
+  "version": "1.0.0",
+  "description": "- Challenge description",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nstseek/pragma-challenge.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nstseek/pragma-challenge/issues"
+  },
+  "homepage": "https://github.com/nstseek/pragma-challenge#readme",
+  "dependencies": {
+    "@types/jest": "^24.0.18"
+  }
+}

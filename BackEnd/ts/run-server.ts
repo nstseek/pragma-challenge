@@ -1,6 +1,9 @@
+// this file does not have tests since it's only a starter, it does not need a test
+
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import express from 'express';
+import logger from './models/middleware/middleware-log';
 import routeTemps from './routes/get-temps/temps';
 import routeRoot from './routes/root/root';
 import routeIpa from './routes/save-temp/ipa/ipa';
@@ -9,20 +12,26 @@ import routePaleAle from './routes/save-temp/pale-ale/pale-ale';
 import routePilsner from './routes/save-temp/pilsner/pilsner';
 import routeStout from './routes/save-temp/stout/stout';
 import routeWheatBeer from './routes/save-temp/wheat-beer/wheat-beer';
-import Server from './server';
+import NodeServer from './server';
 
 // @ts-ignore
-const server = new Server(
-    express,
-    cors,
-    bodyParser,
-    routeIpa,
-    routeLager,
-    routePaleAle,
-    routePilsner,
-    routeStout,
-    routeWheatBeer,
-    routeRoot,
-    routeTemps,
-    7000
-);
+const server = (Server: typeof NodeServer) =>
+    new Server(
+        express,
+        cors,
+        bodyParser,
+        logger,
+        routeIpa,
+        routeLager,
+        routePaleAle,
+        routePilsner,
+        routeStout,
+        routeWheatBeer,
+        routeRoot,
+        routeTemps,
+        7000
+    );
+
+if (process.argv[2] === '--start') {
+    server(NodeServer);
+}

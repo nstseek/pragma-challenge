@@ -14,6 +14,25 @@ import routeStout from './routes/save-temp/stout/stout';
 import routeWheatBeer from './routes/save-temp/wheat-beer/wheat-beer';
 import { IBeers, IServer } from './types/server.type';
 
+type SetFunc = (value: boolean) => any;
+
+type ErrFunc = (err: string) => any;
+
+export const exceptCallback = (err: string) => () => {
+    throw new Error(err);
+};
+
+export const listenCallback = (port: number, setFunc: SetFunc, except = exceptCallback) => (
+    err: string
+) => {
+    if (err) {
+        except(err)();
+    } else {
+        console.log(`Listening on port ${port}`);
+        setFunc(true);
+    }
+};
+
 export default class NodeServer implements IServer {
     Express: typeof express;
     Cors: typeof cors;
@@ -22,11 +41,15 @@ export default class NodeServer implements IServer {
     beers: IBeers;
     ready: boolean;
     serverHandler: Server;
+    cbSetStatus: SetFunc;
+    cb: ErrFunc;
+    err: string;
 
     constructor(
         expressLib: typeof express,
         corsLib: typeof cors,
         bodyParserLib: typeof bodyParser,
+        loggerMiddleware: typeof logger,
         ipaRoutes: typeof routeIpa,
         lagerRoutes: typeof routeLager,
         paleAleRoutes: typeof routePaleAle,
@@ -35,8 +58,12 @@ export default class NodeServer implements IServer {
         wheatBeerRoutes: typeof routeWheatBeer,
         rootRoutes: typeof routeRoot,
         tempsRoutes: typeof routeTemps,
-        port: number
+        port: number,
+        cb = listenCallback,
+        cbStatus = (value: boolean) => (this.ready = value)
     ) {
+        this.cbSetStatus = cbStatus;
+        this.cb = cb(port, this.cbSetStatus);
         this.Cors = corsLib;
         this.ready = false;
         this.Express = expressLib;
@@ -44,15 +71,8 @@ export default class NodeServer implements IServer {
         this.server = this.Express();
         this.server.use(this.Cors());
         this.server.use(this.BodyParser({ limit: '10mb' }));
-        this.server.use(logger);
-        this.serverHandler = this.server.listen(port, (err: string) => {
-            if (err) {
-                throw new Error(err);
-            } else {
-                console.log(`Listening on port ${port}`);
-                this.ready = true;
-            }
-        });
+        this.server.use(loggerMiddleware);
+        this.serverHandler = this.server.listen(port, this.cb);
         this.beers = {
             ipa: 0,
             lager: 0,
