@@ -43,8 +43,15 @@ export default class App extends React.Component<any, State> {
         return (
             <div className='app'>
                 <span className='watermark'>
-                    Todos os valores aqui são gerados usando Math.random(), o código fonte do backend está disponível no
-                    repositório desta página
+                    Todos os valores aqui são gerados usando Math.random(), o back e o front end desde projeto estão
+                    disponiveis{' '}
+                    <a
+                        href='https://github.com/nstseek/pragma-challenge/tree/master'
+                        target='_blank'
+                        rel='noopener noreferrer'
+                    >
+                        aqui
+                    </a>
                 </span>
                 <div className='header-container'>
                     <div className='icon-container'>
