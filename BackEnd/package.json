@@ -5,6 +5,7 @@
   "main": "js/server.js",
   "scripts": {
     "test": "jest",
+    "test:watch": "jest --watch",
     "start": "sh ./.scripts/runmock.sh",
     "start:dev": "sh ./.scripts/startdev.sh",
     "lint": "tslint ./ts/**/*",
