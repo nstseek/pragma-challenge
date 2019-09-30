@@ -1,7 +1,7 @@
 import { getByText, queryByAttribute } from '@testing-library/dom';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Card, { StatusColor, Status } from './Card';
+import Card, { Status, StatusColor } from './Card';
 
 const statusColor = {
     blue: 'rgb(0, 0, 255)',
