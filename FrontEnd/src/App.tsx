@@ -4,9 +4,9 @@ import React from 'react';
 import './App.scss';
 import Card from './components/Card';
 
-const server = 'http://localhost:7000';
+export const server = 'http://localhost:7000';
 
-const delay = 1000;
+export const delay = 1000;
 
 interface State {
     temps: {
@@ -57,10 +57,12 @@ export default class App extends React.Component<any, State> {
         );
     }
 
-    fetchTemps = async () => {
-        const response = await fetch(`${server}/temps`);
+    fetchTemps = async (setTime = setTimeout, fetchData = fetch) => {
+        const response = await fetchData(`${server}/temps`);
         const temps = await response.json();
-        this.setState((previousState: State) => ({ ...previousState, temps }));
-        setTimeout(this.fetchTemps, delay);
+        this.setState(this.setStateTemps(temps));
+        setTime(this.fetchTemps, delay);
     };
+
+    setStateTemps = (temps: State['temps']) => (previousState: State) => ({ ...previousState, temps });
 }

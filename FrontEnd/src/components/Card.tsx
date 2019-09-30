@@ -15,13 +15,13 @@ interface TempRange {
     max: number;
 }
 
-enum Status {
+export enum Status {
     OK = 0,
     'Too hot',
     'Too cold'
 }
 
-enum StatusColor {
+export enum StatusColor {
     green = '#00d162',
     blue = '#0000ff',
     red = '#ff005e'
@@ -81,7 +81,7 @@ export default class Card extends React.Component<Props> {
         );
     }
 
-    evaluateFillerLength = () => {
+    evaluateFillerLength() {
         const tempAboveMinimum = this.props.temperature - this.props.tempRange.min;
         const tempRange = this.props.tempRange.max - this.props.tempRange.min;
         const tempPercent = (tempAboveMinimum / tempRange) * 100;
@@ -120,5 +120,6 @@ export default class Card extends React.Component<Props> {
             default:
                 this.statusColor = StatusColor.green;
         }
+        return 1;
     };
 }
