@@ -1,4 +1,6 @@
-# This repository was made for a project that solves the challenge made by DBServer/Pragma
+# This project is a mock, it is not complete nor have tests, go to the master branch to see the full project
+
+## This repository was made for a project that solves the challenge made by DBServer/Pragma
 
 - Challenge description 
 
